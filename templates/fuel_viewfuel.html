@@ -1,0 +1,118 @@
+{% include 'fuel_header.html' %}
+<br><br><br>
+<br><br><br>
+<!--<h1 align="center" style="color:white;">View Fuel </h1><br>-->
+<style>
+.grid-container{
+ 	margin: 25px 50px ;
+	display: grid;
+	grid-template-columns: auto auto auto;
+<!--	background-color: grey;-->
+	padding: 10px;
+	grid-row-gap: 20px;
+	grid-column-gap: 20px;
+}
+.grid-item {
+	background-color: lightgrey;
+	padding: 10px;
+	border: 1px solid black;
+	border-radius: 15px;
+	text-align: center;
+	}
+
+ table{
+	background-color: lightgrey;
+	padding: 30px;
+	text-align: center;
+	border-radius:5px;
+	width:45%;
+	}
+
+th{
+	width:25%;
+	padding: 20px;
+	font-family: Calibri;
+	font-size: 20px;
+	resize:vertical;
+
+	}
+td{
+	width:60%;
+	padding: 20px;
+	font-family: Calibri;
+	font-size: 20px;
+	resize:vertical;
+}
+tr{
+	width:50%;
+	padding: 20px;
+
+	font-family: Calibri;
+	font-size: 20px;
+	resize:vertical;
+
+        }
+        input[type=text]{
+            width: 90%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            resize: vertical;
+        }
+		input[type=submit]
+        {
+            width: 20%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            resize: vertical;
+        }
+
+</style>
+{% if data['updatefuel'] %}
+<body>
+	<h1 align="center" style="color:black;">Update Fuel </h1><br>
+	<form method="post">
+		<table align="center">
+			<tr>
+				<th> Amount </th>
+				<td><input type="text" name="amount" value="{{data['updatefuel'][0]['amount']}}"></td>
+			</tr>
+			<tr>
+				<th> Availability </th>
+				<td><input type="text" name="available" value="{{data['updatefuel'][0]['available']}}"></td>
+			</tr>
+			<tr>
+				<td colspan="2" align="center"><input type="submit" name="update" class="btn btn-info" value="Update Now"></td>
+			</tr>
+		</table>
+	</form>
+</body>
+<br><br><br>
+
+{% else %}
+	<h1 align="center" style="color:black;">View Fuel  </h1><br>
+<!--<h1 align="center" style="color:white;">View Fuel </h1><br>-->
+	<div class="grid-container">
+
+			{% for row in data['fuel'] %}
+					<div class="grid-item">
+						<h5>Fuel Type    :    {{row['categoryname']}}</h5>
+                        <h5>Amount    :    {{row['amount']}} Rs per Ltr</h5>
+						<h5>District    :    {{row['district']}}</h5>
+                        <h5>City    :    {{row['city']}}</h5>
+                        <h5>Mobile    :    {{row['mobile']}}</h5>
+						<h5>Available    :    {{row['available']}}</h5>
+
+						<a href="?action=update&id={{row['fuel_id']}}" class="btn btn-sm btn-info"  style="text-decoration: none; size: width=350px; height: 40px; padding:10px;" >Update</a>
+						&nbsp&nbsp
+						<a href="?action=delete&id={{row['fuel_id']}}" class="btn btn-sm btn-danger" style="text-decoration: none; size: width=350px; height: 40px; padding:10px;">Delete</a>
+					</div>
+			{% endfor %}
+	</div>
+	{% endif %}
+</body>
+<br><br><br>
+<!--<br><br>-->
+
+{% include 'footer.html' %}

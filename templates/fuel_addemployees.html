@@ -1,0 +1,152 @@
+{% include 'fuel_header.html' %}
+<br><br><br><br>
+<!--registration form 1 -->
+<style type="text/css">
+        /*.container{
+            text-align: center;
+            background-color: rgb(99, 109, 109);
+            padding: 100px;
+        }*/
+        table{
+            width: 50%;
+            padding: 12px;
+            border-radius: 4px;
+            resize: vertical;
+            color: black;
+            font-style: bold;
+            font-family:Calibri;
+            font-size: 20px;
+        }
+        th{
+            width: 25%;
+            padding: 12px;
+            border-radius: 4px;
+            resize: vertical;
+            color: black;
+            font-style: bold;
+            font-family:Calibri;
+            font-size: 20px;
+        }
+        tr{
+        	width: 90%;
+            padding: 12px;
+            border-radius: 4px;
+            resize: vertical;
+            color: black;
+            font-style: bold;
+            font-family:Calibri;
+            font-size: 20px;
+        }
+        td{
+        	width: 90%;
+            padding: 12px;
+            border-radius: 4px;
+            resize: vertical;
+            color: black;
+            font-style: bold;
+            font-family:Calibri;
+            font-size: 20px;
+
+        }
+
+        input{
+            background-color:lightgrey;
+        }
+        input[type=text]{
+            width: 90%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            resize: vertical;
+        }
+        input[type=password]{
+            width: 90%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            resize: vertical;
+
+        }
+        input[type=email]{
+            width: 90%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            resize: vertical;
+
+        }
+        textarea{
+            width: 90%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            resize: vertical;
+            background-color:lightgrey;
+        }
+        input[type=radio]{
+            width: 20%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            resize: vertical;
+
+        }
+        input[type=submit]
+        {
+            width: 20%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            resize: vertical;
+        }
+
+
+    </style>
+    <body >
+        <form method="post">
+        	<br>
+            <u><h2 align="center" style="color:black;">Employee Registration</h2></u>
+          <table  align="Center">
+             <tr class="tr">
+                <th>Full Name</th>
+                <td class="td">
+                    <input type="text" name="name"  id="fname" required="" placeholder="Enter Full Name">
+                </td>
+            </tr>
+             <tr class="tr">
+                <th>Address</th>
+                <td class="td">
+                  <textarea name="address"placeholder="Enter Address"></textarea>
+                </td>
+            </tr>
+
+                <tr class="tr">
+                <th>Mobile Number</th>
+                <td class="td">
+                    <input type="text" name="mobile" required="" placeholder="Enter Contact Number" pattern="[0-9]{10}">
+                </td>
+            </tr>
+
+                <tr class="tr">
+                <th>Email</th>
+                <td class="td">
+                    <input type="email" name="email" required="" placeholder="Enter Email-ID">
+                </td>
+            </tr>
+           	<tr class="tr">
+           		<th><b>Password</b></th>
+           		<td class="td">
+           			<input type="password" placeholder="Enter Password" name="password" required="">
+           		</td>
+           	</tr>
+           	<tr class="tr">
+           		<td colspan="2" align="center" class="td">
+           			<input type="submit" name="submit" value="Register Now" class="btn btn-success">
+           		</td>
+           	</tr>
+           </table>
+        </form>
+    </body>
+<br><br>
+
+{% include 'footer.html' %}

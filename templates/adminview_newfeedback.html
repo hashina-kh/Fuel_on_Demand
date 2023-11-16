@@ -1,0 +1,79 @@
+{% include 'admin_header.html' %}
+<br><br><br><br><br>
+
+<style type="text/css">
+	table{
+		border: 1px solid gray;
+		width: 60%;
+		padding: 10px;
+		background-color:lightgrey;
+	}
+	tr{
+		border: 1px solid gray;
+		padding: 10px;
+	}
+	th{
+		border: 1px solid gray;
+		padding: 10px;
+		text-align: center;
+	}
+	td{
+		border: 1px solid gray;
+		padding: 10px;
+	}
+
+        textarea{
+            width: 70%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            resize: vertical;
+            ba
+
+        }
+
+        input[type=submit]
+        {
+            width: 20%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            resize: vertical;
+        }
+
+
+</style>
+<body>
+<h1 align="center" style="color:white;">New Feedback</h1><br>
+
+	<form method="post">
+		<center>
+	<table align="Center">
+		<tr>
+			<th>Date</th>
+			<th>Name</th>
+			<th>Feedback</th>
+			<th>Send Reply</th>
+		</tr>
+		{% for row in data['fb'] %}
+		<tr>
+			<td>{{row['date']}}</td>
+			<td>{{row['name']}}</td>
+			<td>{{row['feedback']}}</td>
+			{% if row['reply']=="pending" %}
+				<td>
+					<textarea name="reply{{loop.index}}"></textarea>
+					<input type="submit" name="submit{{loop.index}}" value="submit">
+				</td>
+				{% else %}
+				<td><b>{{row['reply']}}</b></td>
+				{% endif %}
+		</tr>
+		{% endfor %}
+
+	</table>
+</center>
+</form>
+</body>
+<br><br><br><br>
+{% include 'footer.html' %}

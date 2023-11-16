@@ -1,0 +1,141 @@
+{% include 'user_header.html' %}
+<br><br><br>
+<br><br><br>
+<style type="text/css">
+
+        table{
+            width: 35%;
+            padding: 30px;
+            border-radius: 10px;
+            resize: vertical;
+            color: black;
+            font-style: bold;
+            font-family:Calibri;
+            font-size: 20px;
+            background-color:lightgrey;
+        }
+        th{
+            width: 40%;
+            padding: 12px;
+            border-radius: 4px;
+            resize: vertical;
+            color: black;
+            font-style: bold;
+            font-family:Calibri;
+            font-size: 20px;
+        }
+        tr{
+        	width: 70%;
+            padding: 20px;
+            border-radius: 4px;
+            resize: vertical;
+            color: black;
+            font-style: bold;
+            font-family:Calibri;
+            font-size: 20px;
+        }
+        td{
+        	width: 30%;
+            padding: 12px;
+            border-radius: 4px;
+            resize: vertical;
+            color: black;
+            font-style: bold;
+            font-family:Calibri;
+            font-size: 20px;
+
+        }
+        input{
+            background-color:lightgrey;
+      	}
+         input[type=text]{
+            width: 90%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            resize: vertical;
+        }
+         input[type=submit]
+        {
+            width: 30%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            resize: vertical;
+        }
+
+</style>
+
+<body>
+{% if data['updatecat'] %}
+<body>
+	<h1 align="center" style="color:white;">Update Contact Number</h1>
+	<form method="post">
+		<table align="center">
+			<tr><td> New Number</td>
+				<td><input type="text" name="mobile" value="{{data['updatecat'][0]['phone']}}"></td>
+			</tr>
+			<tr>
+				<td colspan="2" align="center"><input type="submit" name="update" value="Update Now" class="btn btn-success"></td>
+			</tr>
+		</table>
+	</form>
+</body>
+<br><br><br>
+
+{% else %}
+<div class="cont2">
+<!--	<h1 align="center" style="color:white;"> Profile </h1><br>-->
+<h1 align="center" style="color:white;">My Profile</h1><br>
+
+	{% for row in data['my'] %}
+	<form method="post">
+		<table align="center">
+			<tr>
+				<th>User Name</th>
+				<td>:</td>
+				<td>{{row['name']}}</td>
+			</tr>
+			<tr>
+				<th>DOB </th>
+				<td>:</td>
+				<td>{{row['dob']}}</td>
+			</tr>
+            <tr>
+				<th>District </th>
+				<td>:</td>
+				<td>{{row['district']}}</td>
+			</tr>
+            <tr>
+				<th>City </th>
+				<td>:</td>
+				<td>{{row['city']}}</td>
+			</tr>
+             <tr>
+				<th>Pincode </th>
+				 <td>:</td>
+				<td>{{row['pincode']}}</td>
+			</tr>
+             <tr>
+				<th>Contact Number </th>
+				 <td>:</td>
+				<td>{{row['phone']}}</td>
+			</tr>
+			<tr align="center">
+				<td colspan="3">
+					<a href="?action=update&id={{row['login_id']}}" class="btn btn-sm btn-info"  style="text-decoration: none; size: width=350px; height: 40px; padding:10px;" >Update Contact Number</a>
+				</td>
+			</tr>
+
+		</table>
+	</form>
+	{% endfor %}
+</div>
+<br>
+<br>
+<br>
+{% endif %}
+</body>
+<br>
+
+{% include 'footer.html' %}

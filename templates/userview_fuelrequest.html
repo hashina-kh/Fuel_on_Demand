@@ -1,0 +1,94 @@
+{% include 'user_header.html' %}
+<br><br><br>
+<br><br><br>
+ <h1 align="center"><font size="20" color="black">View fuel requests</font></h1>
+<style type="text/css">
+	table{
+		border: 1px solid gray;
+		width: 80%;
+		padding: 10px;
+		background-color:lightgrey;
+	}
+	tr{
+		border: 1px solid gray;
+		padding: 10px;
+	}
+	th{
+		border: 1px solid gray;
+		padding: 10px;
+		text-align: center;
+	}
+	td{
+		border: 1px solid gray;
+		padding: 10px;
+	}
+
+</style>
+<body>
+<!--<h1 align="center" style="color:white;">Fuel Stations</h1>-->
+
+	<form method="post">
+		<center>
+	<table align="Center">
+		<tr>
+			<th>Date</th>
+			<th>Fuelstation Name</th>
+			<th>User Name</th>
+			<th>Fuel Type</th>
+			<th>Amount</th>
+			<th>Quantity</th>
+			<th>Total</th>
+			<th>Contact</th>
+			<th>Request Status</th>
+			<th>Payment Status</th>
+<!--			<th>Delivering Employee Details</th>-->
+		</tr>
+		{% for row in data['req'] %}
+		<tr>
+			<td>{{row['date']}}</td>
+			<td>{{row['fname']}}</td>
+			<td>{{row['name']}}</td>
+			<td>{{row['categoryname']}}</td>
+			<td>{{row['amount']}}</td>
+			<td>{{row['quantity']}}</td>
+			<td>{{row['total']}}</td>
+<!--			<td>{{row['location']}}</td>-->
+			<td>{{row['phn_num']}}</td>
+
+
+			<td>{{row['req_status']}}</td>
+			{% if row['req_status']=='Pending' %}
+			<td>...</td>
+			{% elif row['pay_status']=='Paid' %}
+			<td>Paid</td>
+			{% else %}
+			<td>
+				<a href="/user/fuel_payment?id={{row['request_id']}}" style="text-decoration: none" class="btn btn-primary">Pay Now</a>
+			</td>
+			{% endif %}
+
+<!--			{% if row['employee_id']==0 %}-->
+<!--			<td>Not Defined</td>-->
+<!--			{% elif row['employee_id']!=0  %}-->
+<!--			{% else %}-->
+<!--			<td>{{row['emp_name']}}Employeename</td>-->
+<!--			{% endif %}-->
+
+<!--			<td>{{row['location']}}</td>-->
+<!--			<td>{{row['status']}}</td>-->
+<!--					<td>-->
+<!--						<a href="/admin/adminview_fuelstations?id={{row['login_id']}}" style="text-decoration: none" class="btn btn-primary">Accept</a>-->
+
+<!--						<a href="/admin/adminview_fuelstations?id1={{row['login_id']}}" style="text-decoration: none" class="btn btn-primary">Reject</a>-->
+<!--					</td>-->
+
+		</tr>
+		{% endfor %}
+
+	</table>
+</center>
+</form>
+</body>
+<br><br><br>
+<br><br><br>
+{% include 'footer.html' %}

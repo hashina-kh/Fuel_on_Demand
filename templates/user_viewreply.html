@@ -1,0 +1,54 @@
+{% include 'user_header.html' %}
+<br><br><br><br>
+<br><br>
+<style type="text/css">
+	table{
+		border: 1px solid gray;
+		width: 60%;
+		padding: 10px;
+		background-color:lightgrey;
+	}
+	tr{
+		border: 1px solid gray;
+		padding: 10px;
+	}
+	th{
+		border: 1px solid gray;
+		padding: 10px;
+		text-align: center;
+	}
+	td{
+		border: 1px solid gray;
+		padding: 10px;
+	}
+
+</style>
+<body>
+<h1 align="center" style="color:white;">Feedback Reply</h1>
+
+	<form method="post">
+		<center>
+	<table align="Center">
+		<tr>
+			<th>Date</th>
+			<th>Name of User</th>
+			<th>Feedback</th>
+			<th>Reply</th>
+
+
+		</tr>
+		{% for row in data['fb'] %}
+		<tr>
+			<td>{{row['date']}}</td>
+			<td>{{row['name']}}</td>
+			<td>{{row['feedback']}}</td>
+			<td>{{row['reply']}}</td>
+		</tr>
+		{% endfor %}
+
+	</table>
+</center>
+</form>
+</body>
+<br><br><br><br>
+{% include 'footer.html' %}

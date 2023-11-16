@@ -1,0 +1,89 @@
+{% include 'fuel_header.html' %}
+<br><br><br>
+<br><br><br>
+<h1 align="center" style="color:white;"> Assign Employee for Paid Fuel Requests </h1><br>
+
+<style type="text/css">
+	table{
+		border: 1px solid gray;
+		width: 80%;
+		padding: 10px;
+		background-color:lightgrey;
+	}
+	tr{
+		border: 1px solid gray;
+		padding: 10px;
+	}
+	th{
+		border: 1px solid gray;
+		padding: 10px;
+		text-align: center;
+	}
+	td{
+		border: 1px solid gray;
+		padding: 10px;
+	}
+	select{
+	padding:5px;
+	border-radius:5px;
+	}
+
+</style>
+<body>
+<!--<h1 align="center" style="color:white;">Fuel Stations</h1>-->
+
+	<form method="post">
+		<center>
+	<table align="Center">
+		<tr>
+			<th>Date</th>
+			<th>User Name</th>
+			<th>Quantity</th>
+			<th>Place</th>
+			<th>Contact</th>
+			<th>Total</th>
+			<th>Request Status</th>
+			<th>Payment Status</th>
+			<th>Assigned Employee id</th>
+
+		</tr>
+		{% for row in data['req'] %}
+		<tr>
+			<td>{{row['date']}}</td>
+			<td>{{row['name']}}</td>
+			<td>{{row['quantity']}}</td>
+			<td>{{row['place']}}</td>
+			<td>{{row['phn_num']}}</td>
+			<td>{{row['total']}}</td>
+			<td>{{row['req_status']}}</td>
+            <td>{{row['pay_status']}}</td>
+			{% if row['employee_id']==0 %}
+
+            <td>
+                <select name="employee">
+					<option> select the employee now </option>
+					{% for row in data['emp'] %}
+                   	 <option value="{{row['employee_id']}}">{{row['emp_name']}}</option>
+					{% endfor %}
+                </select>
+				<input type="submit" name="submit{{loop.index}}" value="submit" class="btn btn-primary" >
+
+            </td>
+			{% else %}
+			<td>{{row['employee_id']}}</td>
+			{% endif %}
+
+		</tr>
+		{% endfor %}
+
+	</table>
+</center>
+</form>
+</body>
+<br><br><br>
+<br><br><br>
+
+<br><br><br>
+<!--<br><br>-->
+
+{% include 'footer.html' %}

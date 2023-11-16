@@ -1,0 +1,112 @@
+{% include 'admin_header.html' %}
+<br><br><br><br>
+<br><br>
+
+
+<style>
+.grid-container{
+ 	margin: 50px;
+	display: grid;
+	grid-template-columns: auto auto auto;
+<!--	background-color: grey;-->
+	padding: 10px;
+	grid-row-gap: 20px;
+	grid-column-gap: 20px;
+}
+.grid-item {
+	background-color: lightgrey;
+	padding: 10px;
+	border: 1px solid black;
+	border-radius: 15px;
+	text-align: center;
+	}
+
+ table{
+	background-color: lightgrey;
+	padding: 30px;
+	text-align: center;
+	border-radius:5px;
+	width:45%;
+	}
+
+th{
+	width:25%;
+	padding: 20px;
+	font-family: Calibri;
+	font-size: 20px;
+	resize:vertical;
+
+	}
+td{
+	width:60%;
+	padding: 20px;
+	font-family: Calibri;
+	font-size: 20px;
+	resize:vertical;
+}
+tr{
+	width:50%;
+	padding: 20px;
+
+	font-family: Calibri;
+	font-size: 20px;
+	resize:vertical;
+
+        }
+        input[type=text]{
+            width: 90%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            resize: vertical;
+        }
+		input[type=submit]
+        {
+            width: 25%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            resize: vertical;
+        }
+
+</style>
+
+{% if data['updatecat'] %}
+	 <form method="post">
+        	<br>
+            <u><h2 align="center" style="color:black;">Update Fuel Category</h2></u>
+          <table  align="Center">
+             <tr class="tr">
+                <th>Category Name</th>
+                <td class="td">
+                    <input type="text" name="cname"  id="cname" required="" value="{{data['updatecat'][0]['categoryname']}}" placeholder="Enter Category Name">
+                </td>
+            </tr>
+           	<tr class="tr">
+           		<td colspan="2" align="center" class="td">
+           			<input type="submit" name="update" value="Update Category" class="btn btn-success">
+           		</td>
+           	</tr>
+           </table>
+        </form>
+
+<br><br><br>
+
+{% else %}
+	<h1 align="center" style="color:black;">Fuel Categorys </h1><br>
+	<div class="grid-container">
+
+			{% for row in data['Cat'] %}
+					<div class="grid-item">
+						<h3>Category    :    {{row['categoryname']}}</h3><br>
+						<a href="?action=update&id={{row['category_id']}}" class="btn btn-sm btn-info"  style="text-decoration: none; size: width=350px; height: 40px; padding:10px;" >Update</a>
+						&nbsp&nbsp
+						<a href="?action=delete&id={{row['category_id']}}" class="btn btn-sm btn-danger" style="text-decoration: none; size: width=350px; height: 40px; padding:10px;">Delete</a>
+					</div>
+			{% endfor %}
+	</div>
+	{% endif %}
+</body>
+
+<br><br><br><br>
+{% include 'footer.html' %}

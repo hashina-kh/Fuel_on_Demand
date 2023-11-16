@@ -1,0 +1,164 @@
+{% include 'fuel_header.html' %}
+<br><br><br>
+<br><br><br>
+<style type="text/css">
+
+        table{
+            width: 50%;
+            padding: 12px;
+            border-radius: 4px;
+            resize: vertical;
+            color: black;
+            font-style: bold;
+            font-family:Calibri;
+            font-size: 20px;
+        }
+        th{
+            width: 25%;
+            padding: 12px;
+            border-radius: 4px;
+            resize: vertical;
+            color: black;
+            font-style: bold;
+            font-family:Calibri;
+            font-size: 20px;
+        }
+        tr{
+        	width: 90%;
+            padding: 12px;
+            border-radius: 4px;
+            resize: vertical;
+            color: black;
+            font-style: bold;
+            font-family:Calibri;
+            font-size: 20px;
+        }
+        td{
+        	width: 70%;
+            padding: 12px;
+            border-radius: 4px;
+            resize: vertical;
+            color: black;
+            font-style: bold;
+            font-family:Calibri;
+            font-size: 20px;
+
+        }
+
+        input{
+            background-color:lightgrey;
+        }
+        input[type=text]{
+            width: 90%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            resize: vertical;
+        }
+
+        select{
+            width: 90%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            resize: vertical;
+            background-color:lightgrey;
+        }
+
+        input[type=submit]
+        {
+            width: 25%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            resize: vertical;
+        }
+
+
+    </style>
+    <body >
+        <form method="post">
+<h1 align="center" style="color:white;">Add Fuel </h1><br>
+<!-- <u><h2 align="center" style="color:black;">User Registration</h2></u>-->
+          <table  align="Center">
+             <tr class="tr">
+                <th>Fuel Station Name</th>
+                <td class="td">
+                    {% for i in data['fs'] %}
+                    <input type="text" name="name"  id="fsname" required="" placeholder="{{i['fname']}} " readonly>
+                    {% endfor %}
+                </td>
+            </tr>
+              <tr class="tr">
+                <th>
+                    Type of fuel
+                </th>
+                <td class="td">
+                    <select name="Category">
+                        <option>select</option>
+                        {% for i in data['cat'] %}
+                        <option value="{{i.category_id}}">{{i.categoryname}}</option>
+                        {% endfor %}
+                    </select>
+                </td>
+            </tr>
+              <tr class="tr">
+           		<th>District</th>
+           		<td class="td">
+                    <select name="district" id="district">
+                      <option>--------------Select Your District---------------</option>
+                      <option value="kannur">Kannur</option>
+                      <option value="kasargod">Kasargod</option>
+                      <option value="kozhikode">Kozhikode</option>
+                      <option value="malappuram">Malappuram</option>
+                      <option value="wayanad">Wayanad</option>
+                      <option value="ernakulam">Ernakulam</option>
+                      <option value="idukki">Idukki </option>
+                      <option value="palakkad">Palakkad</option>
+                      <option value="thrissur">Thrissur</option>
+                      <option value="alappuzha">Alappuzha</option>
+                      <option value="kollam">Kollam</option>
+                      <option value="kottayam">Kottayam</option>
+                      <option value="pathanamthitta">Pathanamthitta</option>
+                      <option value="thiruvananthapuram">Thiruvananthapuram</option>
+                    </select>
+<!--           			<input type="text" name="district" required=""  id="dist" placeholder=" Enter District" >-->
+           		</td>
+           	</tr>
+              <tr class="tr">
+           		<th>City</th>
+           		<td class="td">
+           			<input type="text" name="city" required=""  id="city" placeholder="Enter City">
+           		</td>
+           	</tr>
+             <tr class="tr">
+           		<th>Amount Per Liter</th>
+           		<td class="td">
+           			<input type="text" name="amount" required=""  id="amount" placeholder="Enter Amount of Fuel">
+           		</td>
+           	</tr>
+                <tr class="tr">
+                <th>Mobile Number</th>
+                <td class="td">
+                    <input type="text" name="mobile" required="" placeholder="Enter Contact Number" pattern="[0-9]{10}">
+                </td>
+            </tr>
+              <tr class="tr">
+           		<th>Available</th>
+           		<td class="td">
+           			<input type="text" name="available" required=""  id="available" placeholder="Please Enter yes or no.">
+           		</td>
+           	</tr>
+
+           	<tr class="tr">
+           		<td colspan="2" align="center" class="td">
+           			<input type="submit" name="submit" value="Add" class="btn btn-success">
+           		</td>
+           	</tr>
+           </table>
+        </form>
+    </body>
+
+<br><br>
+
+{% include 'footer.html' %}

@@ -1,0 +1,89 @@
+{% include 'admin_header.html' %}
+<br><br><br><br><br>
+<style type="text/css">
+	table{
+		border: 1px solid gray;
+		width: 80%;
+		padding: 10px;
+		background-color:lightgrey;
+	}
+	tr{
+		border: 1px solid gray;
+		padding: 10px;
+	}
+	th{
+		border: 1px solid gray;
+		padding: 10px;
+		text-align: center;
+	}
+	td{
+		border: 1px solid gray;
+		padding: 10px;
+	}
+
+</style>
+<body>
+{% if data['count']==0 %}
+<br><br><br><br>
+<h4 align="center" style="color:white;"> < ----- No more New fuelstations ----- ></h4>
+
+{% else %}
+<h1 align="center" style="color:white;">Fuel Stations</h1>
+
+	<form method="post">
+		<center>
+	<table align="Center">
+		<tr>
+			<th>Fuelstation Name</th>
+			<th>Licence Number</th>
+			<th>District</th>
+			<th>City</th>
+			<th>Pincode</th>
+			<th>Contact</th>
+			<th>Location</th>
+			<th>Status</th>
+
+		</tr>
+		{% for row in data['fuel'] %}
+		<tr>
+			<td>{{row['fname']}}</td>
+			<td>{{row['licence_no']}}</td>
+			<td>{{row['district']}}</td>
+			<td>{{row['city']}}</td>
+			<td>{{row['pincode']}}</td>
+			<td>{{row['mobile']}}</td>
+<!--			<td>{{row['location']}}</td>-->
+			<td>{{row['status']}}</td>
+					<td>
+						<a href="/admin/adminview_fuelstations?id={{row['login_id']}}" style="text-decoration: none" class="btn btn-primary">Accept</a>
+
+						<a href="/admin/adminview_fuelstations?id1={{row['login_id']}}" style="text-decoration: none" class="btn btn-primary">Reject</a>
+					</td>
+
+
+
+
+<!--			<td><font color="purple" size="3"><img src="/{{row['park_image']}}" width="100" height="100"></img></font></td>-->
+<!--			<td><font color="purple" size="3">{{row['park_des']}}</font></td>-->
+<!--			<td align="Center">-->
+<!--				<a href="/admin/add_staff?id={{row['park_id']}}" class="btn btn-sm btn-danger" style="text-decoration: none; padding:10px;">Add Staff</a>-->
+<!--				<br><br><br>-->
+<!--				<a href="/admin/new_rides?id={{row['park_id']}}" class="btn btn-sm btn-danger" style="text-decoration: none; padding:10px;">Add New Rides</a>-->
+<!--				<br><br><br>-->
+<!--				<a href="?action=delete&id={{row['park_id']}}" class="btn btn-sm btn-danger" style="text-decoration: none; padding:10px;">Delete</a>-->
+<!--			</td>-->
+		</tr>
+		{% endfor %}
+
+	</table>
+</center>
+</form>
+{% endif %}
+</body>
+
+<br><br>
+<br><br>
+<br><br>
+
+
+{% include 'footer.html' %}

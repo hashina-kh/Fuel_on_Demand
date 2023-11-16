@@ -1,0 +1,80 @@
+{% include 'employee_header.html' %}
+<br><br><br><br>
+<br><br>
+<style type="text/css">
+	table{
+		border: 1px solid gray;
+		width: 80%;
+		padding: 10px;
+		background-color:lightgrey;
+	}
+	tr{
+		border: 1px solid gray;
+		padding: 10px;
+	}
+	th{
+		border: 1px solid gray;
+		padding: 10px;
+		text-align: center;
+	}
+	td{
+		border: 1px solid gray;
+		padding: 10px;
+	}
+
+</style>
+<body>
+{% if data['work']==None %}
+<h1 align="center" style="color:black"> No Assigned Works </h1>
+{% else %}
+
+<h1 align="center" style="color:white;"> My Assigned Works</h1><br>
+
+
+	<form method="post">
+		<center>
+	<table align="Center">
+		<tr>
+			<th>Fuelstation Name</th>
+			<th>Fuel type</th>
+			<th>Quantity</th>
+			<th>User Name</th>
+			<th>Place</th>
+			<th>Contact</th>
+			<th>Work Status</th>
+
+		</tr>
+		{% for row in data['work'] %}
+		<tr>
+			<td>{{row['fname']}}</td>
+			<td>{{row['categoryname']}}</td>
+			<td>{{row['quantity']}}</td>
+			<td>{{row['name']}}</td>
+			<td>{{row['place']}}</td>
+			<td>{{row['phone']}}</td>
+			{% if row['work_status']=="Received" %}
+					<td>
+						<a href="/employee/empworks?id={{row['work_id']}}" style="text-decoration: none" class="btn btn-success">Compleated</a>
+			</td>
+			{% else %}
+			<td>{{row['work_status']}}</td>
+			{% endif %}
+
+
+
+
+		</tr>
+		{% endfor %}
+
+	</table>
+</center>
+</form>
+
+{% endif %}
+</body>
+
+<br><br>
+<br><br>
+<br><br>
+
+{% include 'footer.html' %}
